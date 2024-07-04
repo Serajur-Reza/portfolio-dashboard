@@ -25,7 +25,7 @@ const Menu = (props: any) => {
       </button>
       {isOpened ? (
         <ul className="mx-4 px-2 border-l text-sm font-medium">
-          {items.map((item, idx) => (
+          {items.map((item: any, idx: any) => (
             <li key={idx}>
               <a
                 href={item.href}

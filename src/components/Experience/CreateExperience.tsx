@@ -8,7 +8,7 @@ const CreateExperience = () => {
   const [endDate, setEndDate] = useState(new Date());
 
   const { register, handleSubmit, control } = useForm();
-  const { mutateAsync: createExprience, isLoading } = useCreateExperience();
+  const { mutateAsync: createExprience } = useCreateExperience();
   const onSubmit = async (data: any) => {
     console.log(data);
     const res = await createExprience(data);
@@ -44,7 +44,7 @@ const CreateExperience = () => {
             render={() => (
               <DatePicker
                 selected={startDate}
-                onChange={(date) => setStartDate(date)}
+                onChange={(date) => setStartDate(date as any)}
                 // {...register("start_date")}
               />
             )}
@@ -60,7 +60,7 @@ const CreateExperience = () => {
             render={() => (
               <DatePicker
                 selected={endDate}
-                onChange={(date) => setEndDate(date)}
+                onChange={(date) => setEndDate(date as any)}
                 // {...register("start_date")}
               />
             )}

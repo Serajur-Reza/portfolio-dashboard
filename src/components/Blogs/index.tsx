@@ -6,7 +6,7 @@ const Blogs = () => {
   console.log(blogs);
   return (
     <div>
-      {blogs?.data?.data?.map((item) => (
+      {blogs?.data?.data?.map((item: any) => (
         <article
           className="max-w-md mx-auto mt-4 shadow-lg border rounded-md duration-300 hover:shadow-sm"
           key={item._id}

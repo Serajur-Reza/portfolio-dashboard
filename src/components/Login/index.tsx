@@ -1,11 +1,11 @@
 import { useForm } from "react-hook-form";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useLogin } from "../../queryHooks/auth/useLogin";
 
 const Login = () => {
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
-  const { mutateAsync: login, isLoading } = useLogin();
+  const { mutateAsync: login } = useLogin();
   const onSubmit = async (data: any) => {
     console.log(data);
     const res = await login(data);

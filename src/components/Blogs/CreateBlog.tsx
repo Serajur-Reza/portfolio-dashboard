@@ -1,6 +1,6 @@
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useCreateBlog } from "../../queryHooks/blogs/useCreateBlog";
 import parse from "html-react-parser";
 
@@ -19,7 +19,7 @@ import parse from "html-react-parser";
 const CreateBlog = () => {
   const [title, setTitle] = useState("");
   const [textEditor, setTextEditor] = useState("");
-  const { mutateAsync: createBlog, isLoading } = useCreateBlog();
+  const { mutateAsync: createBlog } = useCreateBlog();
 
   const onSubmit = async (e: any) => {
     e.preventDefault();
@@ -54,10 +54,10 @@ const CreateBlog = () => {
           <CKEditor
             editor={ClassicEditor}
             data={textEditor}
-            onReady={(editor) => {
-              // You can store the "editor" and use when it is needed.
-            }}
-            onChange={(event, editor) => {
+            // onReady={(editor) => {
+            //   // You can store the "editor" and use when it is needed.
+            // }}
+            onChange={(editor: any) => {
               const data = editor.getData();
 
               setTextEditor(data);

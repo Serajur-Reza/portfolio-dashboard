@@ -5,7 +5,7 @@ const Experience = () => {
   console.log(experiences);
   return (
     <div>
-      {experiences?.data?.data?.map((item) => (
+      {experiences?.data?.data?.map((item: any) => (
         <a href="">
           <div>
             <div className="justify-between sm:flex">

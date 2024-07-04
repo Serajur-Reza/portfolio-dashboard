@@ -19,10 +19,10 @@ const EditBlog = () => {
         <CKEditor
           editor={ClassicEditor}
           data={textEditor}
-          onReady={(editor) => {
-            // You can store the "editor" and use when it is needed.
-          }}
-          onChange={(event, editor) => {
+          // onReady={(editor) => {
+          //   // You can store the "editor" and use when it is needed.
+          // }}
+          onChange={(editor: any) => {
             const data = editor.getData();
 
             setTextEditor(data);

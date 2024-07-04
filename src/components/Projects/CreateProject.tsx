@@ -3,7 +3,7 @@ import { useCreateProject } from "../../queryHooks/projects/useCreateProject";
 
 const CreateProject = () => {
   const { register, handleSubmit } = useForm();
-  const { mutateAsync: createProject, isLoading } = useCreateProject();
+  const { mutateAsync: createProject } = useCreateProject();
   const onSubmit = async (data: any) => {
     console.log(data);
     const res = await createProject(data);

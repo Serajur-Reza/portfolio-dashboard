@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import Login from "../../components/Login";
 import { Navigate } from "react-router-dom";
 
 type Props = {

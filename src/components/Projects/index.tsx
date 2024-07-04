@@ -5,7 +5,7 @@ const Projects = () => {
   console.log(projects);
   return (
     <div>
-      {projects?.data?.data?.map((item) => (
+      {projects?.data?.data?.map((item: any) => (
         <a href="">
           <div>
             <div className="justify-between sm:flex">

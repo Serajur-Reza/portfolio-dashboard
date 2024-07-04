@@ -27,7 +27,7 @@ const EditExperience = () => {
           <label htmlFor="">Start Date</label>
           <DatePicker
             selected={startDate}
-            onChange={(date) => setStartDate(date)}
+            onChange={(date) => setStartDate(date as any)}
           />
         </div>
 
@@ -35,7 +35,7 @@ const EditExperience = () => {
           <label htmlFor="">End Date</label>
           <DatePicker
             selected={endDate}
-            onChange={(date) => setEndDate(date)}
+            onChange={(date) => setEndDate(date as any)}
           />
         </div>
 

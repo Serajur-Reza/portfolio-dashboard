@@ -29,19 +29,19 @@ const skillsNav = [{ name: "Home", href: "/skills", icon: "" }];
 const projectsNav = [
   { name: "Home", href: "/projects", icon: "" },
   { name: "Create Projects", href: "/projects/create", icon: "" },
-  { name: "Edit Project", href: "/projects/edit", icon: "" },
+  // { name: "Edit Project", href: "/projects/edit", icon: "" },
 ];
 
 const experienceNav = [
   { name: "Home", href: "/experience", icon: "" },
   { name: "Create Experience", href: "/experience/create", icon: "" },
-  { name: "Edit Experience", href: "/experience/edit", icon: "" },
+  // { name: "Edit Experience", href: "/experience/edit", icon: "" },
 ];
 
 const blogsNav = [
   { name: "Home", href: "/blogs", icon: "" },
   { name: "Create Blog", href: "/blogs/create", icon: "" },
-  { name: "Edit Blog", href: "/blogs/edit", icon: "" },
+  // { name: "Edit Blog", href: "/blogs/edit", icon: "" },
 ];
 
 const Sidebar = () => {

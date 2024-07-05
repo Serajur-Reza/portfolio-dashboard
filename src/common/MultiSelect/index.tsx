@@ -32,22 +32,30 @@ const MultiSelect = (props: Props) => {
     >
       {options.length > 0 && (
         <ul>
-          {options.map((option) => (
-            <li key={option.id}>{option.name}</li>
+          {options.map((option, index) => (
+            <li key={index}>{option}</li>
           ))}
         </ul>
       )}
       <ComboboxInput
         aria-label="Assignees"
         onChange={(event) => setQuery(event.target.value)}
-        placeholder="please add skills"
+        placeholder="please search skills"
+        className="w-[200px] border border-black-300 py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 cursor-pointer rounded-md focus:ring-0 "
       />
-      <ComboboxOptions anchor="bottom" className="border empty:invisible">
+      <ComboboxOptions
+        anchor="bottom"
+        className="absolute mt-1 max-h-60 w-[200px] overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm"
+      >
         {filteredOptions.map((option) => (
           <ComboboxOption
             key={option.id}
-            value={option}
-            className="data-[focus]:bg-blue-100"
+            value={option.name}
+            className={({ active }) =>
+              `relative cursor-default select-none py-2 pl-10 pr-4 ${
+                active ? "bg-teal-600 text-white" : "text-gray-900"
+              }`
+            }
           >
             {option.name}
           </ComboboxOption>

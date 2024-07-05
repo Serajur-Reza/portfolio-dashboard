@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useLogin } from "../../queryHooks/auth/useLogin";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -11,10 +12,11 @@ const Login = () => {
     const res = await login(data);
     console.log(res);
 
-    if (res.status === 200) {
+    if (res?.status === 200) {
       console.log(res);
       localStorage.setItem("authToken", res.data.data.token);
       navigate("/");
+      toast.success("successfully logged in");
     }
   };
   return (

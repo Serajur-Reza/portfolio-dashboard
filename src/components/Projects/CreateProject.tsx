@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useCreateProject } from "../../queryHooks/projects/useCreateProject";
+import toast from "react-hot-toast";
 
 const CreateProject = () => {
   const { register, handleSubmit } = useForm();
@@ -8,6 +9,10 @@ const CreateProject = () => {
     console.log(data);
     const res = await createProject(data);
     console.log(res);
+
+    if (res?.status === 200) {
+      toast.success("successfully craeted project");
+    }
   };
   return (
     <div className="flex justify-center items-center">

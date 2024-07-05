@@ -3,18 +3,7 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import { useState } from "react";
 import { useCreateBlog } from "../../queryHooks/blogs/useCreateBlog";
 import parse from "html-react-parser";
-
-// const HtmlToText = ({ htmlContent }) => {
-//   const divRef = useRef(null);
-
-//   useEffect(() => {
-//     if (divRef.current) {
-//       console.log(divRef.current.textContent); // Extracted text
-//     }
-//   }, [htmlContent]);
-
-//   return <div ref={divRef} dangerouslySetInnerHTML={{ __html: htmlContent }} />;
-// };
+import toast from "react-hot-toast";
 
 const CreateBlog = () => {
   const [title, setTitle] = useState("");
@@ -30,12 +19,9 @@ const CreateBlog = () => {
     });
     console.log(res);
 
-    // console.log({
-    //   title: title,
-    //   description: textEditor,
-    // });
-    // const res = await createExprience(data);
-    // console.log(res);
+    if (res?.status === 200) {
+      toast.success("successfully created blog");
+    }
   };
 
   return (

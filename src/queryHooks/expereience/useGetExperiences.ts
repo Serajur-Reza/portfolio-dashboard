@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useQuery } from "react-query";
-import { local_url } from "../../constants/urls";
+import { live_url } from "../../constants/urls";
 
 export const useGetExperiences = () => {
   //   const queryClient = useQueryClient();
   const result = useQuery({
+    queryKey: ["experience"],
     queryFn: () => getExperiences(),
   });
 
@@ -12,7 +13,10 @@ export const useGetExperiences = () => {
 };
 
 const getExperiences = async () => {
-  console.log("called");
-  const res = await axios.get(`${local_url}/experience`);
-  return res;
+  try {
+    const res = await axios.get(`${live_url}/experience`);
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
 };

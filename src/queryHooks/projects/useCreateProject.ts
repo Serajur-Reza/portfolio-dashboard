@@ -1,20 +1,23 @@
 import axios from "axios";
-import { useMutation } from "react-query";
-import { local_url } from "../../constants/urls";
+import { useMutation, useQueryClient } from "react-query";
+import { live_url } from "../../constants/urls";
 
 export const useCreateProject = () => {
-  //   const queryClient = useQueryClient();
+  const queryClient: any = useQueryClient();
   const result = useMutation({
     mutationFn: createProject,
-    // onSuccess: ()=>{
-    //     queryClient.invalidateQueries['user']
-    // }
+    onSuccess: () => {
+      queryClient.invalidateQueries["project"];
+    },
   });
   return result;
 };
 
 const createProject = async (body: any) => {
-  console.log("called");
-  const res = await axios.post(`${local_url}/projects`, body);
-  return res;
+  try {
+    const res = await axios.post(`${live_url}/projects`, body);
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
 };

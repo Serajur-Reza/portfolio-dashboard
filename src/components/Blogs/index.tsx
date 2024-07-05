@@ -1,47 +1,46 @@
+import { Link } from "react-router-dom";
 import { useGetBlogs } from "../../queryHooks/blogs/useGetBlogs";
 import parse from "html-react-parser";
+import dayjs from "dayjs";
 
 const Blogs = () => {
   const { data: blogs } = useGetBlogs();
   console.log(blogs);
   return (
-    <div>
-      {blogs?.data?.data?.map((item: any) => (
-        <article
-          className="max-w-md mx-auto mt-4 shadow-lg border rounded-md duration-300 hover:shadow-sm"
-          key={item._id}
-        >
-          <a>
-            <img
-              loading="lazy"
-              alt={item.title}
-              className="w-full h-48 rounded-t-md"
-            />
-            <div className="flex item-center mt-2 pt-3 ml-4 mr-2">
-              {/* <div className="flex-none w-10 h-10 rounded-full">
-                <img
-                  src={item.authorLogo}
-                  className="w-full h-full rounded-full"
-                  alt={item.authorName}
-                />
-              </div> */}
-              <div className="ml-3">
-                <span className="block text-gray-900">{item.title}</span>
-                <span className="block text-gray-400 text-sm">
-                  {item.createdAt}
-                </span>
+    <>
+      <div className="container mx-auto px-4 my-8  animate-fade">
+        <div className="mt-5">
+          <div className="grid gap-x-8 gap-y-10 mt-16 sm:grid-cols-2 lg:grid-cols-3">
+            {blogs?.data?.data?.map((item: any) => (
+              <div className="w-full mx-auto group sm:max-w-sm">
+                <Link to={`/blogs/${item?._id}`}>
+                  <img
+                    src={
+                      "https://lh3.googleusercontent.com/a/ACg8ocKhOcP9rnWyVrZqlEubp3q8AmVUz6G73QnngpfLKcDziJJZLq26=s288-c-no"
+                    }
+                    loading="lazy"
+                    alt={"thumbnail"}
+                    className="w-full rounded-lg"
+                  />
+                  <div className="mt-3 space-y-2">
+                    <span className="block text-indigo-600 text-sm">
+                      <h3 className="text-lg text-gray-800 duration-150 group-hover:text-indigo-600 font-semibold">
+                        {item?.title}
+                      </h3>
+                      {dayjs(item?.start_date).format("DD-MMMM-YYYY")}
+                    </span>
+
+                    <p className="text-gray-600 text-md duration-150 group-hover:text-gray-800 blog-text">
+                      {parse(String(item?.description))}
+                    </p>
+                  </div>
+                </Link>
               </div>
-            </div>
-            <div className="pt-3 ml-4 mr-2 mb-3">
-              {/* <h3 className="text-xl text-gray-900">{item.title}</h3> */}
-              <p className="text-gray-400 text-sm mt-1 truncate">
-                {parse(item.description)}
-              </p>
-            </div>
-          </a>
-        </article>
-      ))}
-    </div>
+            ))}{" "}
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

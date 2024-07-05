@@ -1,19 +1,23 @@
 import axios from "axios";
-import { useMutation } from "react-query";
-import { local_url } from "../../constants/urls";
+import { useMutation, useQueryClient } from "react-query";
+import { live_url } from "../../constants/urls";
 
 export const useCreateSkills = () => {
-  //   const queryClient = useQueryClient();
+  const queryClient: any = useQueryClient();
   const result = useMutation({
     mutationFn: createSkills,
-    // onSuccess: ()=>{
-    //     queryClient.invalidateQueries['user']
-    // }
+    onSuccess: () => {
+      queryClient.invalidateQueries["skills"];
+    },
   });
   return result;
 };
 
 const createSkills = async (body: any) => {
-  const res = await axios.post(`${local_url}/skills`, body);
-  return res;
+  try {
+    const res = await axios.post(`${live_url}/skills`, body);
+    return res;
+  } catch (err) {
+    console.log(err);
+  }
 };

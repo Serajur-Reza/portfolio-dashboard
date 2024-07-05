@@ -2,6 +2,7 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import { useForm, Controller } from "react-hook-form";
 import { useCreateExperience } from "../../queryHooks/expereience/useCreateExperience";
+import toast from "react-hot-toast";
 
 const CreateExperience = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -13,6 +14,10 @@ const CreateExperience = () => {
     console.log(data);
     const res = await createExprience(data);
     console.log(res);
+
+    if (res?.status === 200) {
+      toast.success("successfully created expereience");
+    }
   };
   return (
     <div className="flex justify-center items-center">

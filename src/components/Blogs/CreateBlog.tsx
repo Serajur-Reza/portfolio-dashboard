@@ -2,7 +2,7 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import { useState } from "react";
 import { useCreateBlog } from "../../queryHooks/blogs/useCreateBlog";
-import parse from "html-react-parser";
+// import parse from "html-react-parser";
 import toast from "react-hot-toast";
 
 const CreateBlog = () => {
@@ -40,12 +40,12 @@ const CreateBlog = () => {
           <CKEditor
             editor={ClassicEditor}
             data={textEditor}
-            // onReady={(editor) => {
-            //   // You can store the "editor" and use when it is needed.
-            // }}
-            onChange={(editor: any) => {
-              const data = editor.getData();
-
+            onReady={(editor: any) => {
+              console.log("editor is ready to use", editor);
+            }}
+            onChange={(event: any, editor: any) => {
+              console.log(event);
+              const data = editor?.getData();
               setTextEditor(data);
             }}
           />
@@ -54,8 +54,8 @@ const CreateBlog = () => {
             selectors: [{ selector: "p" }],
           })} */}
 
-          {textEditor}
-          {parse(textEditor)}
+          {/* {textEditor}
+          {parse(textEditor)} */}
           {/* <HtmlToText htmlContent={textEditor} /> */}
         </div>
         <button

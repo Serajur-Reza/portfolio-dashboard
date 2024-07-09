@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "ckeditor5/ckeditor5.css";
 
 import { QueryClient, QueryClientProvider } from "react-query";
 
